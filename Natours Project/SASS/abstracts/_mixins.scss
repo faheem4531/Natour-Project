@@ -1,0 +1,69 @@
+@mixin clearflix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+}
+
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    
+}
+
+
+
+
+//Media  Query Managment
+
+/* 
+0 - 600        Phone
+600 - 900      Tablet portrait
+900 - 1200     Tablet landscape
+1200 - 1800    is where our normal style applies
+1800 +         Big Screens
+
+
+
+
+
+Breakpoint argument choices
+
+phone
+tab-port
+tab-land
+big-dextop
+
+1em = 16px
+
+
+ORDER  : Base +  typography > General Layout + Grid > Page layout + components
+*/
+
+@mixin respond($breakpoint) {
+
+    @if $breakpoint == phone 
+    {
+        @media only screen and (max-width :37.5em){ @content };      //600px 
+    }
+
+    @if $breakpoint == tab-port 
+    {
+        @media only screen and (max-width :56.25em){ @content };        //900px 
+    }
+
+    @if $breakpoint == tab-land 
+    {
+        @media only screen and(max-width :75em){ @content };       //1200px 
+    }
+
+    @if $breakpoint == big-dextop 
+    {
+        @media only screen and (min-width :112.5em){ @content };       //1800px 
+    }
+    
+}
